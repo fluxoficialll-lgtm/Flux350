@@ -1,6 +1,6 @@
 
 import React, { lazy } from 'react';
-import { ProtectedRoute } from '../Componentes/ComponentesDeAuth/ProtectedRoute';
+import { ProtectedRoute } from './Rotas.Protegidas';
 
 const PG_Lista_Conversas = lazy(() => import('../pages/PG.Lista.Conversas').then(m => ({ default: m.PG_Lista_Conversas })));
 

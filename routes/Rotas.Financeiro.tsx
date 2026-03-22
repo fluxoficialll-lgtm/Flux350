@@ -1,6 +1,6 @@
 
 import React, { lazy } from 'react';
-import { ProtectedRoute } from '../Componentes/ComponentesDeAuth/ProtectedRoute';
+import { ProtectedRoute } from './Rotas.Protegidas';
 
 // Garante que todos os componentes lazy usem a sintaxe correta para importações nomeadas.
 const FinancialPanel = lazy(() => import('../pages/FinancialPanel').then(module => ({ default: module.FinancialPanel })));

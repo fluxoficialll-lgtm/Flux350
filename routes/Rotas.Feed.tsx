@@ -1,6 +1,6 @@
 
 import React, { lazy } from 'react';
-import { ProtectedRoute } from '../Componentes/ComponentesDeAuth/ProtectedRoute';
+import { ProtectedRoute } from './Rotas.Protegidas';
 
 const Feed = lazy(() => import('../pages/Feed').then(module => ({ default: module.Feed })));
 const PGDetalhesPostFeed = lazy(() => import('../pages/PG.Detalhes.Post.Feed.tsx').then(module => ({ default: module.PGDetalhesPostFeed })));

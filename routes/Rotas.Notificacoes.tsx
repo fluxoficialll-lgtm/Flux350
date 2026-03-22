@@ -1,6 +1,6 @@
 
 import React, { lazy } from 'react';
-import { ProtectedRoute } from '../Componentes/ComponentesDeAuth/ProtectedRoute';
+import { ProtectedRoute } from './Rotas.Protegidas';
 
 const Notifications = lazy(() => import('../pages/Notifications').then(m => ({ default: m.Notifications })));
 

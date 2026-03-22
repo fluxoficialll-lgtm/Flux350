@@ -1,6 +1,6 @@
 
 import React, { lazy } from 'react';
-import { ProtectedRoute } from '../Componentes/ComponentesDeAuth/ProtectedRoute';
+import { ProtectedRoute } from './Rotas.Protegidas';
 
 const PG_Configuracoes_Grupo = lazy(() => import('../pages/PG.Configuracoes.Grupo').then(m => ({ default: m.PG_Configuracoes_Grupo })));
 const PGGrupoConfiguracoesInformacoes = lazy(() => import('../pages/groups/settings/PG.Grupo.Configuracoes.Informacoes').then(m => ({ default: m.PGGrupoConfiguracoesInformacoes })));

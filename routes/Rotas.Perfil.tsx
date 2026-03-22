@@ -1,6 +1,6 @@
 
 import React, { lazy } from 'react';
-import { ProtectedRoute } from '../Componentes/ComponentesDeAuth/ProtectedRoute';
+import { ProtectedRoute } from './Rotas.Protegidas';
 
 const PG_Perfil_Proprio = lazy(() => import('../pages/PG.Perfil.Proprio').then(m => ({ default: m.PG_Perfil_Proprio })));
 const PG_Perfil_Terceiro = lazy(() => import('../pages/PG.Perfil.Terceiro').then(m => ({ default: m.PG_Perfil_Terceiro })));

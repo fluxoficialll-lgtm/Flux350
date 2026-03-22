@@ -1,6 +1,6 @@
 
 import React, { lazy } from 'react';
-import { ProtectedRoute } from '../Componentes/ComponentesDeAuth/ProtectedRoute';
+import { ProtectedRoute } from './Rotas.Protegidas';
 
 const PG_Reels = lazy(() => import('../pages/PG.Reels').then(module => ({ default: module.PG_Reels })));
 const CreateReel = lazy(() => import('../pages/CreateReel').then(module => ({ default: module.CreateReel })));

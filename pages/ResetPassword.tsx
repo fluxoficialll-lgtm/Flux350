@@ -1,6 +1,5 @@
 
 import React from 'react';
-import { AuthLayout } from '../Componentes/ComponentesDeAuth/AuthLayout';
 import { HookRedefinirSenha } from '../hooks/Hook.Redefinir.Senha';
 
 export const ResetPassword: React.FC = () => {
@@ -19,7 +18,9 @@ export const ResetPassword: React.FC = () => {
   const labelClasses = "block mb-2 text-sm font-medium text-gray-400";
 
   return (
-    <AuthLayout title="Redefinir Senha" subtitle="Crie uma nova senha">
+    <div>
+      <h2>Redefinir Senha</h2>
+      <p>Crie uma nova senha</p>
       <form onSubmit={handleSubmit} className="space-y-6">
         <div>
           <label htmlFor="password" className={labelClasses}>Nova Senha</label>
@@ -55,6 +56,6 @@ export const ResetPassword: React.FC = () => {
           {loading ? 'Salvando...' : 'Salvar nova senha'}
         </button>
       </form>
-    </AuthLayout>
+    </div>
   );
 };

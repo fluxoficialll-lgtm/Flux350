@@ -1,15 +1,12 @@
 
-import React, { useState, useEffect, useRef, Suspense, lazy } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { HookListaGrupos } from '../hooks/Hook.Lista.Grupos';
 import { useModal } from '../Componentes/ComponenteDeInterfaceDeUsuario/Sistema.Modal';
-import { Group } from '../tipos';
 import { Footer } from '../Componentes/layout/Footer';
 import { MainHeader } from '../Componentes/layout/MainHeader';
 import { CardPesquisarGrupo } from '../Componentes/groups/list/Card.Pesquisar.Grupo';
 import { ContêinerListaGrupos } from '../Componentes/groups/list/Contêiner.Lista.Grupos';
 import { CreateGroupFAB } from '../Componentes/groups/list/CreateGroupFAB';
-
-const TrackingModal = lazy(() => import('../Componentes/groups/TrackingModal').then(m => ({ default: m.TrackingModal })));
 
 export const PG_Lista_Grupo: React.FC = () => {
   const { groups, loading, navigate, navigateToGroup, deleteGroup, getUnreadCount } = HookListaGrupos();
@@ -17,8 +14,6 @@ export const PG_Lista_Grupo: React.FC = () => {
 
   const [uiVisible, setUiVisible] = useState(true);
   const [activeMenuId, setActiveMenuId] = useState<string | null>(null);
-  const [isTrackingModalOpen, setIsTrackingModalOpen] = useState(false);
-  const [selectedGroup, setSelectedGroup] = useState<Group | null>(null);
   const lastScrollY = useRef(0);
 
   useEffect(() => {
@@ -53,13 +48,6 @@ export const PG_Lista_Grupo: React.FC = () => {
     }
   };
 
-  const handleOpenTracking = (group: Group, e: React.MouseEvent) => {
-    e.stopPropagation();
-    setActiveMenuId(null);
-    setSelectedGroup(group);
-    setIsTrackingModalOpen(true);
-  };
-
   return (
     <div className="min-h-screen bg-[radial-gradient(circle_at_top_left,_#0c0f14,_#0a0c10)] text-white font-['Inter'] flex flex-col overflow-x-hidden">
       <MainHeader 
@@ -81,7 +69,6 @@ export const PG_Lista_Grupo: React.FC = () => {
               isMenuActive={activeMenuId === group.id}
               onToggleMenu={(e) => { e.stopPropagation(); setActiveMenuId(activeMenuId === group.id ? null : group.id); }}
               onItemClick={() => navigateToGroup(group)}
-              onTracking={(e) => handleOpenTracking(group, e)}
               onDelete={(e) => handleDeleteRequest(group.id, e)}
             />
           ))}
@@ -93,15 +80,6 @@ export const PG_Lista_Grupo: React.FC = () => {
       <CreateGroupFAB visible={uiVisible} onClick={() => navigate('/create-group')} />
       <Footer visible={uiVisible} />
 
-      {isTrackingModalOpen && selectedGroup && (
-        <Suspense fallback={null}>
-          <TrackingModal 
-            isOpen={isTrackingModalOpen}
-            onClose={() => setIsTrackingModalOpen(false)}
-            group={selectedGroup}
-          />
-        </Suspense>
-      )}
     </div>
   );
 };
